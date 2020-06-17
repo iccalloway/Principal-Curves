@@ -38,22 +38,22 @@ the data.” (Hastie and Steutzle, 1989, p. 502). They have the following
 properties:
 
   - **Non-Parametric**: A principal curve
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/0c3fb7540f60a6b8f7885574a74d6488.svg?invert_in_darkmode" align=middle width=52.89508619999999pt height=22.648391699999998pt/>
+    <img src="./svgs/0c3fb7540f60a6b8f7885574a74d6488.svg?invert_in_darkmode" align=middle width=52.89508619999999pt height=22.648391699999998pt/>
     does not depend on any specific distributional assumptions about the
     data set.
   - **Projection**: The projection onto the principal curve will always
     be the closest point on the curve. For all vectors
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/50b8b0bc39b7efe2e14c95811d847dfb.svg?invert_in_darkmode" align=middle width=48.36213855pt height=23.488575000000026pt/>,
+    <img src="./svgs/50b8b0bc39b7efe2e14c95811d847dfb.svg?invert_in_darkmode" align=middle width=48.36213855pt height=23.488575000000026pt/>,
     there is a function
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/9a84e6ad0e665ab791e80db523260a43.svg?invert_in_darkmode" align=middle width=80.86291784999999pt height=22.831056599999986pt/>,
+    <img src="./svgs/9a84e6ad0e665ab791e80db523260a43.svg?invert_in_darkmode" align=middle width=80.86291784999999pt height=22.831056599999986pt/>,
     where
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/352c1d6cbad9e7c6d584c7f33ecbe52b.svg?invert_in_darkmode" align=middle width=184.8971718pt height=30.154261499999993pt/>.
+    <img src="./svgs/352c1d6cbad9e7c6d584c7f33ecbe52b.svg?invert_in_darkmode" align=middle width=184.8971718pt height=30.154261499999993pt/>.
   - **Self-Consistency**:
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/7e0ed847ee1038211ab4f346a0aea6b0.svg?invert_in_darkmode" align=middle width=10.747741949999996pt height=23.488575000000026pt/>
+    <img src="./svgs/7e0ed847ee1038211ab4f346a0aea6b0.svg?invert_in_darkmode" align=middle width=10.747741949999996pt height=23.488575000000026pt/>
     is the expected value for all points
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/83fed5dbd642c6c4601322efa148e81e.svg?invert_in_darkmode" align=middle width=44.61451829999999pt height=23.488575000000026pt/>
+    <img src="./svgs/83fed5dbd642c6c4601322efa148e81e.svg?invert_in_darkmode" align=middle width=44.61451829999999pt height=23.488575000000026pt/>
     that project onto it, where
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/89a2cb8cf2aa85a8ba22be3946bdd5f3.svg?invert_in_darkmode" align=middle width=55.474955249999994pt height=22.648391699999998pt/>
+    <img src="./svgs/89a2cb8cf2aa85a8ba22be3946bdd5f3.svg?invert_in_darkmode" align=middle width=55.474955249999994pt height=22.648391699999998pt/>
     is the data set.
 
 Several of these properties are shared by principal component analysis
@@ -208,44 +208,44 @@ proj_simple <- function(x,y,endpoint=T, tol=1e-4, trim=T,threshold=0.05){
 
 It is possible to project the data onto its principal components. For
 example, for a vector
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/d151d6d10e5e7bfdc450797def10175c.svg?invert_in_darkmode" align=middle width=48.13820714999999pt height=26.76175259999998pt/>
+<img src="./svgs/d151d6d10e5e7bfdc450797def10175c.svg?invert_in_darkmode" align=middle width=48.13820714999999pt height=26.76175259999998pt/>
 in the data set and **PC1** as the first principal component:
 
 <p align="center">
 
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/1483b96ce5c47d97152ba5aebf80c5c5.svg?invert_in_darkmode" align=middle width=171.76897815pt height=16.438356pt/>
+<img src="./svgs/1483b96ce5c47d97152ba5aebf80c5c5.svg?invert_in_darkmode" align=middle width=171.76897815pt height=16.438356pt/>
 
 </p>
 
 <p align="center">
 
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/7fda39a173267f19274ddda4a1759a63.svg?invert_in_darkmode" align=middle width=208.7333688pt height=16.438356pt/>
+<img src="./svgs/7fda39a173267f19274ddda4a1759a63.svg?invert_in_darkmode" align=middle width=208.7333688pt height=16.438356pt/>
 
 </p>
 
 where
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/94e61febe54a3c40d215944a019be7d5.svg?invert_in_darkmode" align=middle width=39.84807254999998pt height=22.55708729999998pt/>
+<img src="./svgs/94e61febe54a3c40d215944a019be7d5.svg?invert_in_darkmode" align=middle width=39.84807254999998pt height=22.55708729999998pt/>
 is a projection matrix onto the first principal component,
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/4c1ff90d32af2823745e64cdc1f6d3d3.svg?invert_in_darkmode" align=middle width=55.972087049999985pt height=22.831056599999986pt/>
+<img src="./svgs/4c1ff90d32af2823745e64cdc1f6d3d3.svg?invert_in_darkmode" align=middle width=55.972087049999985pt height=22.831056599999986pt/>
 are scalars,
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/a6692278735afacf17da4dddcba87479.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
+<img src="./svgs/a6692278735afacf17da4dddcba87479.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
 is a unit length vector parallel to the first principal component, and
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/2ef75a35fa783da4e2a2431eec11e312.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
+<img src="./svgs/2ef75a35fa783da4e2a2431eec11e312.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
 is a unit length vector orthogonal to the first principal component and
 parallel to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/b0b48113967d0a5843b2aaa2d71ec9e2.svg?invert_in_darkmode" align=middle width=10.74774195pt height=23.488575000000026pt/>.
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/a6692278735afacf17da4dddcba87479.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
+<img src="./svgs/b0b48113967d0a5843b2aaa2d71ec9e2.svg?invert_in_darkmode" align=middle width=10.74774195pt height=23.488575000000026pt/>.
+<img src="./svgs/a6692278735afacf17da4dddcba87479.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
 and
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/2ef75a35fa783da4e2a2431eec11e312.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
+<img src="./svgs/2ef75a35fa783da4e2a2431eec11e312.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
 add up to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>
+<img src="./svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>
 and are orthogonal to one another.
 
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/930102fee2c2e6df8cfddd6f46b5a5c6.svg?invert_in_darkmode" align=middle width=101.75608904999999pt height=24.65753399999998pt/>
+<img src="./svgs/930102fee2c2e6df8cfddd6f46b5a5c6.svg?invert_in_darkmode" align=middle width=101.75608904999999pt height=24.65753399999998pt/>
 form an orthogonal basis in
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>,
+<img src="./svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>,
 and the coordinate vector
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/eecbf67b13eb1de2ed8af4eca147cd2d.svg?invert_in_darkmode" align=middle width=92.20892339999999pt height=24.65753399999998pt/>.
+<img src="./svgs/eecbf67b13eb1de2ed8af4eca147cd2d.svg?invert_in_darkmode" align=middle width=92.20892339999999pt height=24.65753399999998pt/>.
 
 #### Plot Generating Code
 
@@ -258,7 +258,7 @@ data. It takes as input:
 2.  A sampling step
 
 3.  An arbitrary function
-    (<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/ae308eede50cc7eeed021420e128e0c5.svg?invert_in_darkmode" align=middle width=49.314959099999996pt height=22.648391699999998pt/>)
+    (<img src="./svgs/ae308eede50cc7eeed021420e128e0c5.svg?invert_in_darkmode" align=middle width=49.314959099999996pt height=22.648391699999998pt/>)
 
 It returns three plots:
 
@@ -269,7 +269,7 @@ It returns three plots:
     the grid
 
 3.  A plot of each point on the grid in the coordinate vector
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/d261b8a0efec2e9f16647637074360f2.svg?invert_in_darkmode" align=middle width=36.794203049999986pt height=24.65753399999998pt/>.
+    <img src="./svgs/d261b8a0efec2e9f16647637074360f2.svg?invert_in_darkmode" align=middle width=36.794203049999986pt height=24.65753399999998pt/>.
 
 <!-- end list -->
 
@@ -355,15 +355,15 @@ example1 <- function(range,step, mapping){
 
 -----
 
-#### Example 1: Projecting onto <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/b48140ea862958104c1c59de5605bc9b.svg?invert_in_darkmode" align=middle width=39.96182519999999pt height=14.15524440000002pt/>
+#### Example 1: Projecting onto <img src="./svgs/b48140ea862958104c1c59de5605bc9b.svg?invert_in_darkmode" align=middle width=39.96182519999999pt height=14.15524440000002pt/>
 
 The figure below is a visualization of what it would look like if all
 points were projected onto a principal component spanned by
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/a8da069a976ad42b72a37dda354a1398.svg?invert_in_darkmode" align=middle width=32.87674994999999pt height=24.65753399999998pt/>.
+<img src="./svgs/a8da069a976ad42b72a37dda354a1398.svg?invert_in_darkmode" align=middle width=32.87674994999999pt height=24.65753399999998pt/>.
 For each point in the grid, the arrow is pointed in the direction of the
 place on the principal curve that it would project to. All points below
 the line point in the direction of
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/699628c77c65481a123e3649944c0d51.svg?invert_in_darkmode" align=middle width=45.66218414999998pt height=24.65753399999998pt/>,
+<img src="./svgs/699628c77c65481a123e3649944c0d51.svg?invert_in_darkmode" align=middle width=45.66218414999998pt height=24.65753399999998pt/>,
 and those above the line point in the exact opposite direction.
 
 ``` r
@@ -374,7 +374,7 @@ print(result[[1]])
 ![](New_files/figure-gfm/example_pca_1-1.png)<!-- -->
 
 If we use the coordinate vectors
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/88b411a44ac63fa692956d9b255c1736.svg?invert_in_darkmode" align=middle width=36.794203049999986pt height=24.65753399999998pt/>
+<img src="./svgs/88b411a44ac63fa692956d9b255c1736.svg?invert_in_darkmode" align=middle width=36.794203049999986pt height=24.65753399999998pt/>
 to plot each point on the grid, then we get the figure below.
 
   - The color of the point corresponds to its original y-value
@@ -399,69 +399,69 @@ principal curve. However, one can define *local coordinates* based on
 projections onto the curve.
 
 Let
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/c629640f014620277b48b436b93a86dd.svg?invert_in_darkmode" align=middle width=113.99504655pt height=26.76175259999998pt/>
+<img src="./svgs/c629640f014620277b48b436b93a86dd.svg?invert_in_darkmode" align=middle width=113.99504655pt height=26.76175259999998pt/>
 be a smooth function that maps real values to points on the principal
 curve -
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/6f7a9360080da82ee09b34818fd150fc.svg?invert_in_darkmode" align=middle width=126.72533279999999pt height=24.65753399999998pt/>.
+<img src="./svgs/6f7a9360080da82ee09b34818fd150fc.svg?invert_in_darkmode" align=middle width=126.72533279999999pt height=24.65753399999998pt/>.
 
 As noted earlier, all
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/50b8b0bc39b7efe2e14c95811d847dfb.svg?invert_in_darkmode" align=middle width=48.36213855pt height=23.488575000000026pt/>
+<img src="./svgs/50b8b0bc39b7efe2e14c95811d847dfb.svg?invert_in_darkmode" align=middle width=48.36213855pt height=23.488575000000026pt/>
 can be projected onto the principal curve.
 
 <p align="center">
 
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/aa01e1ba93e0c3f1d5eabf3aeb8472fd.svg?invert_in_darkmode" align=middle width=323.27248799999995pt height=26.25566955pt/>
+<img src="./svgs/aa01e1ba93e0c3f1d5eabf3aeb8472fd.svg?invert_in_darkmode" align=middle width=323.27248799999995pt height=26.25566955pt/>
 
 </p>
 
 If there is only one point on the curve closest to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>,
+<img src="./svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>,
 then that point is the projection. If there are multiple points,
 however, then the point corresponding to the largest
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/fd8be73b54f5436a5cd2e73ba9b6bfa9.svg?invert_in_darkmode" align=middle width=9.58908224999999pt height=22.831056599999986pt/>
+<img src="./svgs/fd8be73b54f5436a5cd2e73ba9b6bfa9.svg?invert_in_darkmode" align=middle width=9.58908224999999pt height=22.831056599999986pt/>
 is chosen. While this guarantees that every point in
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
+<img src="./svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
 will project to the principal curve, it will also create some headaches.
 
 The difference of the vector and its projection onto the curve is:
 
 <p align="center">
 
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/54b06746ad8da69041ef34c9675386be.svg?invert_in_darkmode" align=middle width=109.05626819999999pt height=16.438356pt/>
+<img src="./svgs/54b06746ad8da69041ef34c9675386be.svg?invert_in_darkmode" align=middle width=109.05626819999999pt height=16.438356pt/>
 
 </p>
 
 Where
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/37bc436e17a86f6f0bae27c70c8c6ca9.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
+<img src="./svgs/37bc436e17a86f6f0bae27c70c8c6ca9.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
 is a unit vector parallel to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/9b0b13347ec448da90a84115f7d13bc4.svg?invert_in_darkmode" align=middle width=61.703777849999994pt height=24.65753399999998pt/>.
+<img src="./svgs/9b0b13347ec448da90a84115f7d13bc4.svg?invert_in_darkmode" align=middle width=61.703777849999994pt height=24.65753399999998pt/>.
 While
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/689c46de244015457450343117618540.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
+<img src="./svgs/689c46de244015457450343117618540.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=23.488575000000026pt/>
 is the same for different points along the principal component line,
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/9867f3716375bbac4f4022ea2597ceaa.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=14.15524440000002pt/>
+<img src="./svgs/9867f3716375bbac4f4022ea2597ceaa.svg?invert_in_darkmode" align=middle width=18.32105549999999pt height=14.15524440000002pt/>
 is not guaranteed to be the same for different points along the
 principal curve.
 
 The projection and the orthogonal projection still sum to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>.
+<img src="./svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>.
 If
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/>
+<img src="./svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/>
 is differentiable around
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/5ec98b485a170e64003a4b8bb0c36ae2.svg?invert_in_darkmode" align=middle width=13.379044799999988pt height=24.7161288pt/>,
+<img src="./svgs/5ec98b485a170e64003a4b8bb0c36ae2.svg?invert_in_darkmode" align=middle width=13.379044799999988pt height=24.7161288pt/>,
 where
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/29d97c2a253b7a6bf4d4d2c37ca4f008.svg?invert_in_darkmode" align=middle width=90.71167874999999pt height=24.7161288pt/>,
+<img src="./svgs/29d97c2a253b7a6bf4d4d2c37ca4f008.svg?invert_in_darkmode" align=middle width=90.71167874999999pt height=24.7161288pt/>,
 then:
 
 <p align="center">
 
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/ad1dc54091e23af1668c6430182dd435.svg?invert_in_darkmode" align=middle width=146.69724135pt height=17.2895712pt/>
+<img src="./svgs/ad1dc54091e23af1668c6430182dd435.svg?invert_in_darkmode" align=middle width=146.69724135pt height=17.2895712pt/>
 
 </p>
 
 The line tangent to the curve where where
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>
+<img src="./svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>
 projects onto the principal curve is orthogonal to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/cde1a6678bc1b97104e5e9e8e232df90.svg?invert_in_darkmode" align=middle width=61.703777849999994pt height=24.65753399999998pt/>.
+<img src="./svgs/cde1a6678bc1b97104e5e9e8e232df90.svg?invert_in_darkmode" align=middle width=61.703777849999994pt height=24.65753399999998pt/>.
 
 -----
 
@@ -470,118 +470,118 @@ projects onto the principal curve is orthogonal to
 We can use a principal curve to define local coordinates according to a
 point’s position relative to the curve. Unfortunately, unlike PCA, we do
 not have a guaranteed ability to describe every point in
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
+<img src="./svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
 this way. The next section describes
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/e6bb22a58889cb2e58f4fce2f3a80e02.svg?invert_in_darkmode" align=middle width=17.94511949999999pt height=22.55708729999998pt/>,
+<img src="./svgs/e6bb22a58889cb2e58f4fce2f3a80e02.svg?invert_in_darkmode" align=middle width=17.94511949999999pt height=22.55708729999998pt/>,
 the subset of
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
+<img src="./svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
 that would allow us to move between standard coordinates and position
 relative to the curve.
 
 Let
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/72cfb2bf6744efc7e6a6e5f265531bb7.svg?invert_in_darkmode" align=middle width=58.28747594999999pt height=26.76175259999998pt/>
+<img src="./svgs/72cfb2bf6744efc7e6a6e5f265531bb7.svg?invert_in_darkmode" align=middle width=58.28747594999999pt height=26.76175259999998pt/>
 be a 2-manifold. A function to map from
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
+<img src="./svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
 to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/e6bb22a58889cb2e58f4fce2f3a80e02.svg?invert_in_darkmode" align=middle width=17.94511949999999pt height=22.55708729999998pt/>
+<img src="./svgs/e6bb22a58889cb2e58f4fce2f3a80e02.svg?invert_in_darkmode" align=middle width=17.94511949999999pt height=22.55708729999998pt/>
 would be:
 
 <p align="center">
 
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/50d2d3868a0615a976ced0742d60630a.svg?invert_in_darkmode" align=middle width=180.31400144999998pt height=19.3534671pt/>
+<img src="./svgs/50d2d3868a0615a976ced0742d60630a.svg?invert_in_darkmode" align=middle width=180.31400144999998pt height=19.3534671pt/>
 
 </p>
 
 where
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/3dc3b13c8c0e18d2542c4428416ca7ca.svg?invert_in_darkmode" align=middle width=40.30656134999999pt height=24.65753399999998pt/>
+<img src="./svgs/3dc3b13c8c0e18d2542c4428416ca7ca.svg?invert_in_darkmode" align=middle width=40.30656134999999pt height=24.65753399999998pt/>
 is the value of
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/fd8be73b54f5436a5cd2e73ba9b6bfa9.svg?invert_in_darkmode" align=middle width=9.58908224999999pt height=22.831056599999986pt/>
+<img src="./svgs/fd8be73b54f5436a5cd2e73ba9b6bfa9.svg?invert_in_darkmode" align=middle width=9.58908224999999pt height=22.831056599999986pt/>
 where
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>
+<img src="./svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>
 projects to the principal curve.
 
 For this mapping to useful, it should be bijective - it should be
 possible to go from
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/e6bb22a58889cb2e58f4fce2f3a80e02.svg?invert_in_darkmode" align=middle width=17.94511949999999pt height=22.55708729999998pt/>
+<img src="./svgs/e6bb22a58889cb2e58f4fce2f3a80e02.svg?invert_in_darkmode" align=middle width=17.94511949999999pt height=22.55708729999998pt/>
 to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
+<img src="./svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
 as well as backwards. If
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>
+<img src="./svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>
 is not, then the coordinate system will have some undesirable
 properties.
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/e6bb22a58889cb2e58f4fce2f3a80e02.svg?invert_in_darkmode" align=middle width=17.94511949999999pt height=22.55708729999998pt/>
+<img src="./svgs/e6bb22a58889cb2e58f4fce2f3a80e02.svg?invert_in_darkmode" align=middle width=17.94511949999999pt height=22.55708729999998pt/>
 includes all the points in
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
+<img src="./svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
 where:
 
 -----
 
 **1. There is only one point on the principal curve closest to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>**
+<img src="./svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>**
 
 Although every point in
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
+<img src="./svgs/433badc501d4f8a183b14684b47f305e.svg?invert_in_darkmode" align=middle width=18.424726649999986pt height=26.76175259999998pt/>
 is projected to the principal curve, points closest to multiple parts of
 a curve do not behave as well.
 
 If there are two points
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/d594e243aeac9b38fabec754ae91d26a.svg?invert_in_darkmode" align=middle width=39.566389499999985pt height=24.65753399999998pt/>
+<img src="./svgs/d594e243aeac9b38fabec754ae91d26a.svg?invert_in_darkmode" align=middle width=39.566389499999985pt height=24.65753399999998pt/>
 and
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/501940342c99bf984e505cec4f363347.svg?invert_in_darkmode" align=middle width=39.566389499999985pt height=24.65753399999998pt/>
+<img src="./svgs/501940342c99bf984e505cec4f363347.svg?invert_in_darkmode" align=middle width=39.566389499999985pt height=24.65753399999998pt/>
 on the principal curve that are closest to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>,
+<img src="./svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>,
 and we assume
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/38d63a2e3c8cc0fd6c8e5669ae00df78.svg?invert_in_darkmode" align=middle width=25.25692619999999pt height=26.76175259999998pt/>
+<img src="./svgs/38d63a2e3c8cc0fd6c8e5669ae00df78.svg?invert_in_darkmode" align=middle width=25.25692619999999pt height=26.76175259999998pt/>
 exists, then:
 
-1.  <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/3dc3b13c8c0e18d2542c4428416ca7ca.svg?invert_in_darkmode" align=middle width=40.30656134999999pt height=24.65753399999998pt/>
+1.  <img src="./svgs/3dc3b13c8c0e18d2542c4428416ca7ca.svg?invert_in_darkmode" align=middle width=40.30656134999999pt height=24.65753399999998pt/>
     must equal equal
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/ce9b0d1765717c60b7915f2a48951a92.svg?invert_in_darkmode" align=middle width=16.141629899999987pt height=22.831056599999986pt/>
+    <img src="./svgs/ce9b0d1765717c60b7915f2a48951a92.svg?invert_in_darkmode" align=middle width=16.141629899999987pt height=22.831056599999986pt/>
     or
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/22d952fd172ae91ac1817c8f2b3be088.svg?invert_in_darkmode" align=middle width=16.141629899999987pt height=22.831056599999986pt/>
+    <img src="./svgs/22d952fd172ae91ac1817c8f2b3be088.svg?invert_in_darkmode" align=middle width=16.141629899999987pt height=22.831056599999986pt/>
     but not both. Assume it equals
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/ce9b0d1765717c60b7915f2a48951a92.svg?invert_in_darkmode" align=middle width=16.141629899999987pt height=22.831056599999986pt/>.
-2.  <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/1d6d83e41f3c73e8ee73f62b50d802cf.svg?invert_in_darkmode" align=middle width=194.86588439999997pt height=26.76175259999998pt/>
+    <img src="./svgs/ce9b0d1765717c60b7915f2a48951a92.svg?invert_in_darkmode" align=middle width=16.141629899999987pt height=22.831056599999986pt/>.
+2.  <img src="./svgs/1d6d83e41f3c73e8ee73f62b50d802cf.svg?invert_in_darkmode" align=middle width=194.86588439999997pt height=26.76175259999998pt/>
     for some
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.11380504999999pt height=14.15524440000002pt/>.
-3.  <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/7806f111d85e58899f5a62ed1f813f84.svg?invert_in_darkmode" align=middle width=356.9501034pt height=27.6567522pt/>
+    <img src="./svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.11380504999999pt height=14.15524440000002pt/>.
+3.  <img src="./svgs/7806f111d85e58899f5a62ed1f813f84.svg?invert_in_darkmode" align=middle width=356.9501034pt height=27.6567522pt/>
 
 This is contradiction
-(<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/348dbaf07c2435d0a4410bf293ea5de7.svg?invert_in_darkmode" align=middle width=103.56175664999998pt height=26.76175259999998pt/>),
+(<img src="./svgs/348dbaf07c2435d0a4410bf293ea5de7.svg?invert_in_darkmode" align=middle width=103.56175664999998pt height=26.76175259999998pt/>),
 so the inverse cannot exist if there are multiple points on the
 principal curve equidistant to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>.
+<img src="./svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>.
 
 -----
 
 **2. The point does not project to either endpoint of the curve.**
 
 If we restrict the domain of
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>
+<img src="./svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>
 to points
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>
+<img src="./svgs/62e05a6a03a68c013fd2bcaf8595e812.svg?invert_in_darkmode" align=middle width=10.747741949999993pt height=23.488575000000026pt/>
 closest to only one point on the principal curve, then we can define an
 inverse function
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/2ae2e34c9e312578c415b3db8a2f45f6.svg?invert_in_darkmode" align=middle width=56.64567149999999pt height=26.76175259999998pt/>
+<img src="./svgs/2ae2e34c9e312578c415b3db8a2f45f6.svg?invert_in_darkmode" align=middle width=56.64567149999999pt height=26.76175259999998pt/>
 as follows:
 
 <p align="center">
 
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/71074fac2571141dcb1766b7407121a7.svg?invert_in_darkmode" align=middle width=204.57786359999997pt height=20.6229144pt/>
+<img src="./svgs/71074fac2571141dcb1766b7407121a7.svg?invert_in_darkmode" align=middle width=204.57786359999997pt height=20.6229144pt/>
 
 </p>
 
 where
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/a78539015c55480f59043a98ba5b161f.svg?invert_in_darkmode" align=middle width=76.99798919999999pt height=27.91243950000002pt/>
+<img src="./svgs/a78539015c55480f59043a98ba5b161f.svg?invert_in_darkmode" align=middle width=76.99798919999999pt height=27.91243950000002pt/>
 is a unit vector orthogonal to
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/>
+<img src="./svgs/190083ef7a1625fbc75f243cffb9c96d.svg?invert_in_darkmode" align=middle width=9.81741584999999pt height=22.831056599999986pt/>
 at
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/fd8be73b54f5436a5cd2e73ba9b6bfa9.svg?invert_in_darkmode" align=middle width=9.58908224999999pt height=22.831056599999986pt/>.
+<img src="./svgs/fd8be73b54f5436a5cd2e73ba9b6bfa9.svg?invert_in_darkmode" align=middle width=9.58908224999999pt height=22.831056599999986pt/>.
 
 This function requires the principal curve to be differentiable at
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/fd8be73b54f5436a5cd2e73ba9b6bfa9.svg?invert_in_darkmode" align=middle width=9.58908224999999pt height=22.831056599999986pt/>,
+<img src="./svgs/fd8be73b54f5436a5cd2e73ba9b6bfa9.svg?invert_in_darkmode" align=middle width=9.58908224999999pt height=22.831056599999986pt/>,
 which means that we must restrict the domain of
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>
+<img src="./svgs/3cf4fbd05970446973fc3d9fa3fe3c41.svg?invert_in_darkmode" align=middle width=8.430376349999989pt height=14.15524440000002pt/>
 further to those regions that have that property. Principal curves are
 not smooth at their endpoints, so these must be excluded. *(Although you
 can get around this issue by extrapolating past the defined endpoints of
@@ -590,21 +590,21 @@ don’t discuss it here)*
 
 If the point does not have a unique nearest point on the curve, and it
 does not project to an endpoint, then the local coordinates
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/d261b8a0efec2e9f16647637074360f2.svg?invert_in_darkmode" align=middle width=36.794203049999986pt height=24.65753399999998pt/>
+<img src="./svgs/d261b8a0efec2e9f16647637074360f2.svg?invert_in_darkmode" align=middle width=36.794203049999986pt height=24.65753399999998pt/>
 should not behave in a wacky manner.
 
 -----
 
-#### Example 2: Projecting onto <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/bcb037123f40331d39ba394f2f25c697.svg?invert_in_darkmode" align=middle width=46.514371199999985pt height=26.76175259999998pt/>
+#### Example 2: Projecting onto <img src="./svgs/bcb037123f40331d39ba394f2f25c697.svg?invert_in_darkmode" align=middle width=46.514371199999985pt height=26.76175259999998pt/>
 
 The figure below is a visualization of what it would look like if all
 points were projected onto a principal curve that happens to defined as
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/bcb037123f40331d39ba394f2f25c697.svg?invert_in_darkmode" align=middle width=46.514371199999985pt height=26.76175259999998pt/>.
+<img src="./svgs/bcb037123f40331d39ba394f2f25c697.svg?invert_in_darkmode" align=middle width=46.514371199999985pt height=26.76175259999998pt/>.
 Once again, the arrows are pointed in the direction of the place on the
 curve it would project to.
 
 For the ray extending upward from
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/c26eb5999706b0772f7c4730ca38ba6d.svg?invert_in_darkmode" align=middle width=45.66218414999998pt height=24.65753399999998pt/>,
+<img src="./svgs/c26eb5999706b0772f7c4730ca38ba6d.svg?invert_in_darkmode" align=middle width=45.66218414999998pt height=24.65753399999998pt/>,
 there is a sudden change in the direction of the points on the grid even
 though we are not crossing the boundary of the curve. Over this region,
 each point is equidistant from *two* points on the curve. The principal
@@ -626,7 +626,7 @@ below. While the x and y axes are the same as before, the heat map
 colors correspond to a differences in gradient magnitude moving
 diagonally to the right and upwards along the plot surface. We see that
 at or around
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/c26eb5999706b0772f7c4730ca38ba6d.svg?invert_in_darkmode" align=middle width=45.66218414999998pt height=24.65753399999998pt/>
+<img src="./svgs/c26eb5999706b0772f7c4730ca38ba6d.svg?invert_in_darkmode" align=middle width=45.66218414999998pt height=24.65753399999998pt/>
 upward (with some jitteriness apparently due to variability in the
 projection function), there is a sudden shift in the direction of
 projection.
@@ -652,15 +652,15 @@ transformation to the data as a simple rotation. It seems to be
 stretched in some fashion. A few items worth noting:
 
 1.  If you identify the points that sit along
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/bd450dc65012dda5af82ae6d5a587450.svg?invert_in_darkmode" align=middle width=37.25064419999999pt height=21.18721440000001pt/>,
+    <img src="./svgs/bd450dc65012dda5af82ae6d5a587450.svg?invert_in_darkmode" align=middle width=37.25064419999999pt height=21.18721440000001pt/>,
     these are the same as the points that would lie along
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/bcb037123f40331d39ba394f2f25c697.svg?invert_in_darkmode" align=middle width=46.514371199999985pt height=26.76175259999998pt/>.
+    <img src="./svgs/bcb037123f40331d39ba394f2f25c697.svg?invert_in_darkmode" align=middle width=46.514371199999985pt height=26.76175259999998pt/>.
 
 2.  At above
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/023d47c3582ae5702ecd98d23be90d17.svg?invert_in_darkmode" align=middle width=51.571479299999986pt height=21.18721440000001pt/>,
+    <img src="./svgs/023d47c3582ae5702ecd98d23be90d17.svg?invert_in_darkmode" align=middle width=51.571479299999986pt height=21.18721440000001pt/>,
     the grid seems to be split in two\! If you trace the line originally
     at
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/c08b64ca45add3c8cb756cd706e35b15.svg?invert_in_darkmode" align=middle width=38.78604674999999pt height=21.18721440000001pt/>
+    <img src="./svgs/c08b64ca45add3c8cb756cd706e35b15.svg?invert_in_darkmode" align=middle width=38.78604674999999pt height=21.18721440000001pt/>
     (the brightest yellow), for example, you will reach a discontinuity
     and the line will then continue elsewhere. This is one of the
     dangers of having data that lie on or cross regions with non-unique
@@ -669,7 +669,7 @@ stretched in some fashion. A few items worth noting:
 
 3.  For larger negative y-values, the data points seem to be clustered
     together more closely. The line originally at
-    <img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/3d84e5917dc5e07251eeabbe6a070f01.svg?invert_in_darkmode" align=middle width=51.571479299999986pt height=21.18721440000001pt/>
+    <img src="./svgs/3d84e5917dc5e07251eeabbe6a070f01.svg?invert_in_darkmode" align=middle width=51.571479299999986pt height=21.18721440000001pt/>
     (the deepest purple) appears to take the shape of a tight parabola.
 
 If you plan to do analysis that involves this kind of projection onto a
@@ -708,7 +708,7 @@ ggplot(merged[frame %in% c(113,291)], aes(x=x_scaled, y=y_scaled)) +
 
 What if we wanted to project either of these tongue surface curves onto
 the other? Analogous to the problematic region for
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/bcb037123f40331d39ba394f2f25c697.svg?invert_in_darkmode" align=middle width=46.514371199999985pt height=26.76175259999998pt/>,
+<img src="./svgs/bcb037123f40331d39ba394f2f25c697.svg?invert_in_darkmode" align=middle width=46.514371199999985pt height=26.76175259999998pt/>,
 it is possible for certain tongue shapes to have regions that result in
 discontinuities if another tongue is projected onto it.
 
@@ -828,7 +828,7 @@ print(result[[2]])
 decide to project additional tongue curves onto this shape? In the plot
 below we see that grid is ‘split’ in the region identified from the
 previous plot. If a line is traced along
-<img src="https://rawgit.com/iccalloway/Principal-Curves/master/svgs/e940b41d9d98efc1611562bfb60e1944.svg?invert_in_darkmode" align=middle width=59.790688649999986pt height=21.18721440000001pt/>
+<img src="./svgs/e940b41d9d98efc1611562bfb60e1944.svg?invert_in_darkmode" align=middle width=59.790688649999986pt height=21.18721440000001pt/>
 (bluish-teal), for example, a discontinuity is encountered.
 
 This tongue surface could be useful be useful to project others onto it
