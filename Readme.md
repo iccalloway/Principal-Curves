@@ -16,160 +16,12 @@ text-align: justify}
 </style>
 
 ``` r
-knitr::opts_chunk$set(fig.width=12, fig.height=8, warning=FALSE, message=FALSE)
-
-## LIBRARIES##
-library(data.table)
-library(princurve)
-library(ggplot2)
-library(viridis)
-library(mgcv)
-library(plyr)
-
-theme(plot.margin=grid::unit(c(0,0,0,0), "mm"))
-theme_set(theme_gray(base_size=30))
-```
-
-## What are Principal Curves?
-
-Principal curves are “smooth one-dimensional curves that pass through
-the *middle* of a p-dimensional set, providing a nonlinear summary of
-the data.” (Hastie and Steutzle, 1989, p. 502). They have the following
-properties:
-
-  - **Non-Parametric**: A principal curve \(A \subset \mathbb{R}^p\)
-    does not depend on any specific distributional assumptions about the
-    data set.
-  - **Projection**: The projection onto the principal curve will always
-    be the closest point on the curve. For all vectors
-    \(\vec{u} \in \mathbb{R}^p\), there is a function
-    \(\phi : \mathbb{R}^p \mapsto A\), where
-    \(\phi(\vec{u})=\vec{a} \in \underset{\vec{a}' \in A}{\operatorname{argmin}} |\vec{u}-\vec{a}'|\).
-  - **Self-Consistency**: \(\vec{a}\) is the expected value for all
-    points \(\vec{x} \in X\) that project onto it, where
-    \(X \subset \mathbb{R}^p\) is the data set.
-
-Several of these properties are shared by principal component analysis
-(PCA). PCA is also non-parametric, shows *self-consistency*, and points
-projected onto the line spanned by the first principal component share
-the same *projection* property shown above. In this sense, principal
-curves resemble a non-linear extension of PCA.
-
-This intuition behind principal curves can also be extended to higher
-dimensional manifolds (e.g., principal surfaces). Principal manifolds
-can be a useful way to characterize the variability and central tendency
-of a data set with some degree of curvature.
-
-Tongues naturally curve from the oral cavity into the pharynx,
-regardless of its configuration. Consequently, a constriction formed by
-the tongue and the vocal tract does not correspond to movement in a
-single direction. A constriction formed at the palate can be created by
-upward movement of the tongue body while a constriction formed at the
-pharynx may be created by horizontal movement of the tongue root.
-
-Principal curves can capture the curvature common to the tongue shapes
-in a given set data set. The remaining variability may capture
-differences in exact degree or location of a tongue constriction.
-
-This page a mixture of code that you can use if you want to perform your
-own analysis in R as well as some interesting visualizations of results.
-
-*This is a work in progress - I plan to add additional sections as I get
-the time\!*
-
------
-
-## Pakcage Info
-
-Conveniently enough, there is already a package that implements
-principal curves in R - this analysis is largely based off functions
-from **princurve**, in particular:
-
-  - **principal\_curve** (formerly **principal.curve**): This function
-    uses an iterative algorithm to identify a principal curve from a
-    data set.
-  - **project\_to\_curve**: As you might guess, this function projects
-    data points onto a pre-defined curve.
-
-Although this package does much of the heavy lifting, I have also
-included **orth\_proj** to obtain orthogonal projections of the data
-onto an arbitrary curve as well as several helper functions, which can
-be found directly below.
-
-``` r
-## next_change: Returns the indices corresponding to the next change in value
-## nums: a matrix of values
-## rev: T/F; whether to start from the bottom of 'nums'
-## tol: minimal difference corresponding to inequality
-next_change <- function(nums,rev,tol=1e-10){
-  indices = 1:nrow(nums)
-  step= 1
-  if (rev){
-    indices=rev(indices)
-    step = -1
-  }
-  marker=indices[1]
-  
-  values <- c()
-  for (a in indices){
-    b=marker
-    while(b >= 1 && b <= nrow(nums) && all(nums[a,] - nums[b,] <tol)){
-        b=b+step
-    }
-    
-    if(b>=1 && b <=nrow(nums)){ ## Mark appropriate rows
-      marker=b  
-      values <-c(values,marker) ## Or mark NAs
-    } else{
-      marker=a
-      values <-c(values,NA)
-    }
-    
-  }
-  if(rev){
-    return(rev(values))
-  } else {
-    return(values)
-  }
-}
-
-## orth_proj: Returns the orthogonal projection of a data set onto an arbitrary curve
-## points - points from a data set
-## s - the projection of 'points' onto the curve
-## ord - the row-wise ordering of 'points' such that s[ord,] would form a smooth curve
-orth_proj <- function(point,s,ord){
-    diff_vec <- point-s    
-    ordering <- cbind(ord,rev=1:length(ord))
-    ordering <- ordering[order(ordering[,1]),]    
-    
-    simp <- cbind(s, ordering)
-    simp <- simp[order(simp[,4]),]
-    
-    simp[,c(1,2)] <- simp[,c(1,2)] - simp[next_change(simp[,c(1,2)],T),c(1,2)]
-
-    simp <- simp[order(simp[,3]),]
-
-    distance <- sqrt(rowSums(diff_vec^2))
-    direction <- sign(simp[,1]*diff_vec[,2] - simp[,2]*diff_vec[,1])
-    return(direction*distance)
-}
-
-## proj_simple: Projects data points from x onto y
-# x,y - Two matrices; must have the same number of columns
-# endpoint - whether to treat the orthogonal projection of points projected onto the principal curve end points as NA
-# tol - maximal difference for equality (to catch rounding errors)
-# trim - whether to treat many points projected to the same point as NA. If a curve violates smoothness assumptions, this clustering of points can happen.
-# threshold - maximal percentage of total points that can map to a single lambda value (relevant if trim=T)
-proj_simple <- function(x,y,endpoint=T, tol=1e-4, trim=T,threshold=0.05){
-  test_proj <- project_to_curve(rbind(as.matrix(x),as.matrix(y)),as.matrix(y),stretch=0)
-  x_f <- as.data.frame(
-    cbind(
-      lambda=test_proj$lambda,
+knitr::opts_chunk<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/20e0cbdbc877259346b2c7169abba350.svg?invert_in_darkmode" align=middle width=1531.0806670499999pt height=2436.7478057999997pt/>lambda,
       c=orth_proj(rbind(as.matrix(x),as.matrix(y)), test_proj$s, test_proj$ord)
       )
     )[1:nrow(x),]
   
-  ylam <- range(test_proj$lambda[nrow(x)+1:length(test_proj$lambda)],na.rm=T)
+  ylam <- range(test_proj<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/56a44f4e8ac2b5f2290edf3104b5d637.svg?invert_in_darkmode" align=middle width=270.68596499999995pt height=24.65753399999998pt/>lambda)],na.rm=T)
 
   ## Option: remove points projected to endpoints
   if(endpoint){ 
@@ -253,7 +105,7 @@ example1 <- function(range,step, mapping){
   x <- grange_narrow
   data <- as.matrix(cbind(x,y=mapping(x)))
   projections <- project_to_curve(as.matrix(grid),as.matrix(data))
-  grid$angle <- apply(projections$s - grid,1, function(x){
+  grid<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/ecc508266e26c840ca493a0ed6c4e11b.svg?invert_in_darkmode" align=middle width=203.80215239999998pt height=24.65753399999998pt/>s - grid,1, function(x){
     if (abs(x[1]) < tol & abs(x[2]) < tol){
       return(NA)
     } else {
@@ -265,45 +117,15 @@ example1 <- function(range,step, mapping){
   
   p1<-ggplot() +
   geom_spoke(data=grid, aes(x=Var1, y=Var2, angle=angle, radius=0.4/2, colour=Var2), arrow = arrow(length = unit(.05, 'inches')),size=2)+
-  geom_line(data=data_f[data_f$y >= range[1] & data_f$y <= range[2],], aes(x=x,y=y),colour="black",size=1) +
+  geom_line(data=data_f[data_f<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/e693e7b7712e40e7c8095b77087f7173.svg?invert_in_darkmode" align=middle width=142.78764554999998pt height=24.65753399999998pt/>y <= range[2],], aes(x=x,y=y),colour="black",size=1) +
   scale_colour_viridis()+
   labs(x="x",y="y", colour="y")
   
   projections_narrow <- project_to_curve(as.matrix(grid_narrow),as.matrix(data))
 
   
-  diffs <- cbind(grid_narrow,projections_narrow$s - grid_narrow)
-  ## Identifying trouble spots
-  xs <- diffs[,-c(4)]
-  ys <- diffs[,-c(3)]
-  
-  xs_m <- daply(xs, .(Var1,Var2), function(x) x$"Var1.1")
-  ys_m <- daply(ys, .(Var1,Var2), function(x) x$"Var2.1")
-
-  xs_shift <- rbind(xs_m[2:nrow(xs_m),],rep(NA,ncol(xs_m)))
-  colnames(xs_shift) <- NULL
-  row.names(xs_shift) <- NULL
-
-  ys_shift <- cbind(ys_m[,2:ncol(ys_m)],rep(NA,nrow(ys_m)))
-  colnames(ys_shift) <- NULL
-  row.names(ys_shift) <- NULL
-
-
-  xdiff <- abs(xs_m - xs_shift)
-  ydiff <- abs(ys_m - ys_shift)
-  absol <-sqrt(ydiff^2 + xdiff^2)
-
-  absol_df <- adply(absol,c(1,2),function(x) x)
-  colnames(absol_df)[1:2] <- c('x','y')
-  
-  p2 <- ggplot()+
-  geom_tile(data=absol_df[complete.cases(absol_df),], aes(x=as.numeric(as.character(x))+step/10, y=as.numeric(as.character(y))+step/10, fill=V1))+
-  geom_line(data=data_f[data_f$y >= range[1] & data_f$y <= range[2],], aes(x=x,y=y),colour="red",size=1)+
-  scale_fill_viridis(option="B")+
-  labs(title="Finite gradient magnitude", x="x", y="y", fill="FGM")
-
-   
-  grid$type <- "grid"
+  diffs <- cbind(grid_narrow,projections_narrow<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/2d867fa6d95764e8ead478bc3436deb5.svg?invert_in_darkmode" align=middle width=596.2681609499999pt height=47.671232400000015pt/>"Var1.1")
+  ys_m <- daply(ys, .(Var1,Var2), function(x) x<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/5bbd98cb5bae80ab9eeb28fab858d9f8.svg?invert_in_darkmode" align=middle width=851.2126507499999pt height=325.02278490000003pt/>y >= range[1] & data_f<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/a82893adf831b9df93e3c5b8ebf1cb74.svg?invert_in_darkmode" align=middle width=700.2744424499999pt height=85.29680940000001pt/>type <- "grid"
   
   projections <- grid[,c(1,2,4)]
   
@@ -596,7 +418,7 @@ example2 <- function(curve, step){
   
   
   projections <- project_to_curve(as.matrix(grid),as.matrix(curve))
-  grid$angle <- apply(projections$s - grid,1, function(x){
+  grid<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/ecc508266e26c840ca493a0ed6c4e11b.svg?invert_in_darkmode" align=middle width=203.80215239999998pt height=24.65753399999998pt/>s - grid,1, function(x){
     if (abs(x[1]) < tol & abs(x[2]) < tol){
       return(NA)
     } else {
@@ -614,37 +436,8 @@ example2 <- function(curve, step){
 
   projections_narrow <- project_to_curve(as.matrix(grid_narrow),as.matrix(curve))
   
-  diffs <- cbind(grid_narrow,projections_narrow$s - grid_narrow)
-  ## Identifying trouble spots
-  xs <- diffs[,-c(4)]
-  ys <- diffs[,-c(3)]
-  
-  xs_m <- daply(xs, .(Var1,Var2), function(x) x$"Var1.1")
-  ys_m <- daply(ys, .(Var1,Var2), function(x) x$"Var2.1")
-
-  xs_shift <- rbind(xs_m[2:nrow(xs_m),],rep(NA,ncol(xs_m)))
-  colnames(xs_shift) <- NULL
-  row.names(xs_shift) <- NULL
-
-  ys_shift <- cbind(ys_m[,2:ncol(ys_m)],rep(NA,nrow(ys_m)))
-  colnames(ys_shift) <- NULL
-  row.names(ys_shift) <- NULL
-  list(xs_shift,ys_shift)
-
-  xdiff <- abs(xs_m - xs_shift)
-  ydiff <- abs(ys_m - ys_shift)
-  absol <-sqrt(ydiff^2 + xdiff^2)
-
-  absol_df <- adply(absol,c(1,2),function(a) a)
-  colnames(absol_df)[1:2] <- c('x','y')
-  
-  p2 <- ggplot()+
-  geom_tile(data=absol_df[complete.cases(absol_df),], aes(x=as.numeric(as.character(x)), y=as.numeric(as.character(y)), fill=V1))+
-  geom_point(data=data_f, aes(x=x_scaled,y=y_scaled),colour="red",size=1)+
-  scale_fill_viridis(option="B")+
-  labs(title="Finite gradient magnitude", x="x", y="y", fill="FGM")
-   
-  grid$type <- "grid"
+  diffs <- cbind(grid_narrow,projections_narrow<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/2d867fa6d95764e8ead478bc3436deb5.svg?invert_in_darkmode" align=middle width=596.2681609499999pt height=47.671232400000015pt/>"Var1.1")
+  ys_m <- daply(ys, .(Var1,Var2), function(x) x<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/03a25acf4d057fd1fba360f8fa6a6b75.svg?invert_in_darkmode" align=middle width=851.2126507499999pt height=440.36530559999994pt/>type <- "grid"
   projections <- grid[,c(1,2,4)]
   
   projections_f <- cbind(projections,proj_simple(as.matrix(projections[,c(1,2)]),as.matrix(curve),T))
@@ -667,51 +460,8 @@ dorsum but not really elsewhere.
 ``` r
 soak <- merged[frame==291,c('x_scaled','y_scaled')]
 soak_pc <- principal_curve(as.matrix(soak))
-test <-project_to_curve(as.matrix(soak),soak_pc$s[soak_pc$ord,])
-soak_srt <- soak[test$ord,]
-result <- example2(soak_srt,10)
-
-print(result[[1]])
-```
-
-![](PrincipalCurves_files/figure-gfm/soak-1.png)<!-- -->
-
-This observation is confirmed by the plot of finite gradient magnitude.
-There is a sharp change in gradient magnitude along a curve extending
-downward from the tongue dorsum.
-
-``` r
-print(result[[2]])
-```
-
-![](PrincipalCurves_files/figure-gfm/soak_2-1.png)<!-- --> What does
-this mean if we decide to project additional tongue curves onto this
-shape? In the plot below we see that grid is ‘split’ in the region
-identified from the previous plot. If a line is traced along \(y=-50\)
-(bluish-teal), for example, a discontinuity is encountered.
-
-This tongue surface could be useful be useful to project others onto it
-if the other tongue surfaces did not cross the region corresponding to
-discontinuity. An \[o\] production is somewhat constricted at the uvula
-and is otherwise unconstricted elsewhere, so it may be possible to
-satisfy this constraint depending on your data set.
-
-``` r
-print(result[[3]])
-```
-
-![](PrincipalCurves_files/figure-gfm/soak_3-1.png)<!-- --> What if we
-tried to use the image frame for ‘cult’? From the figure below, there
-appear to be several regions that show sudden change in the direction of
-the projected point.
-
------
-
-``` r
-cult <- merged[frame==113,c('x_scaled','y_scaled')]
-cult_pc <- principal_curve(as.matrix(cult))
-test <-project_to_curve(as.matrix(cult),cult_pc$s[cult_pc$ord,])
-cult_srt <- cult[test$ord,]
+test <-project_to_curve(as.matrix(soak),soak_pc<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/6c906b64d1eb34d99085f3b559977e87.svg?invert_in_darkmode" align=middle width=59.90444294999998pt height=24.65753399999998pt/>ord,])
+soak_srt <- soak[test<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/09f183b33e6ddbbde2c7a487c9a63f5a.svg?invert_in_darkmode" align=middle width=1827.23121075pt height=745.8447050999999pt/>s[cult_pc<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/372f5f38f1ffd9e0596bec654d181418.svg?invert_in_darkmode" align=middle width=185.37526755pt height=24.65753399999998pt/>ord,]
 result <- example2(cult_srt,10)
 print(result[[2]])
 ```
@@ -736,7 +486,7 @@ with. This a vowel-initial ultrasound production of ‘suck’.
 ``` r
 suck <- merged[word=='suck' & rep==1 & nucpoint==0,c('x_scaled','y_scaled')]
 suck_pc <- principal_curve(as.matrix(suck))
-test <-project_to_curve(as.matrix(suck),suck_pc$s[suck_pc$ord,])
+test <-project_to_curve(as.matrix(suck),suck_pc<img src="https://rawgit.com/iccalloway/Principal-Curves/None/svgs/1fca65165aa5aacb0503d270470939ee.svg?invert_in_darkmode" align=middle width=59.771315999999985pt height=24.65753399999998pt/>ord,])
 suck_srt <- suck[test$ord,]
 result <- example2(suck_srt,10)
 print(result[[2]])
