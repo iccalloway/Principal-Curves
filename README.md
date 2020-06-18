@@ -269,9 +269,12 @@ It returns three plots:
 <!-- end list -->
 
 ``` r
+
 example1 <- function(range,step, mapping){
   tol <- 1e-10
   
+  
+  ##Generate x and y grid
   grange <- seq(range[1],range[2],step)
   grange_narrow <- seq(range[1],range[2],step/5)
   
@@ -279,7 +282,11 @@ example1 <- function(range,step, mapping){
   grid_narrow <- expand.grid(grange_narrow,grange_narrow)
   
   x <- grange_narrow
+  
+  ##Generate functional curve
   data <- as.matrix(cbind(x,y=mapping(x)))
+  
+  ##Project grid onto curve
   projections <- project_to_curve(as.matrix(grid),as.matrix(data))
   grid$angle <- apply(projections$s - grid,1, function(x){
     if (abs(x[1]) < tol & abs(x[2]) < tol){
@@ -291,6 +298,7 @@ example1 <- function(range,step, mapping){
   data_f<-as.data.frame(data)
   
   
+  ##Plot curve and grid arrows
   p1<-ggplot() +
   geom_spoke(data=grid, aes(x=Var1, y=Var2, angle=angle, radius=0.4/2, colour=Var2), arrow = arrow(length = unit(.05, 'inches')),size=2)+
   geom_line(data=data_f[data_f$y >= range[1] & data_f$y <= range[2],], aes(x=x,y=y),colour="black",size=1) +
@@ -300,14 +308,16 @@ example1 <- function(range,step, mapping){
   projections_narrow <- project_to_curve(as.matrix(grid_narrow),as.matrix(data))
 
   
+  ##Compute difference vectors
   diffs <- cbind(grid_narrow,projections_narrow$s - grid_narrow)
-  ## Identifying trouble spots
   xs <- diffs[,-c(4)]
   ys <- diffs[,-c(3)]
   
+  #Form matrices of x-wise and y-wise changes
   xs_m <- daply(xs, .(Var1,Var2), function(x) x$"Var1.1")
   ys_m <- daply(ys, .(Var1,Var2), function(x) x$"Var2.1")
 
+  ##Compute finite difference
   xs_shift <- rbind(xs_m[2:nrow(xs_m),],rep(NA,ncol(xs_m)))
   colnames(xs_shift) <- NULL
   row.names(xs_shift) <- NULL
@@ -316,7 +326,7 @@ example1 <- function(range,step, mapping){
   colnames(ys_shift) <- NULL
   row.names(ys_shift) <- NULL
 
-
+  ##Get magnitude of differences
   xdiff <- abs(xs_m - xs_shift)
   ydiff <- abs(ys_m - ys_shift)
   absol <-sqrt(ydiff^2 + xdiff^2)
@@ -324,6 +334,7 @@ example1 <- function(range,step, mapping){
   absol_df <- adply(absol,c(1,2),function(x) x)
   colnames(absol_df)[1:2] <- c('x','y')
   
+  ##Plot curve and magnitude of finite differences
   p2 <- ggplot()+
   geom_tile(data=absol_df[complete.cases(absol_df),], aes(x=as.numeric(as.character(x))+step/10, y=as.numeric(as.character(y))+step/10, fill=V1))+
   geom_line(data=data_f[data_f$y >= range[1] & data_f$y <= range[2],], aes(x=x,y=y),colour="red",size=1)+
@@ -337,7 +348,8 @@ example1 <- function(range,step, mapping){
   
   projections_f <- cbind(projections,proj_simple(as.matrix(projections[,c(1,2)]),as.matrix(data)))
    
-   p3 <- ggplot() +
+  ##Plot grid points in local coordinates
+  p3 <- ggplot() +
      geom_point(data=projections_f[projections_f$type == 'grid',], aes(x=lambda, y=c, colour=Var2, group=Var1),size=2)+
      geom_text(data=projections_f[projections_f$type == 'grid',], aes(x=lambda, y=c, colour=Var2, label=Var1),size=4,vjust=2)+
      scale_colour_viridis(option="viridis")+
@@ -714,6 +726,7 @@ of points centered around an arbitrary curve.
 example2 <- function(curve, step){
   tol <- 1e-10
   
+  ##Identify grid that surrounds curve
   x_range <- range(curve[,1],na.rm=T)
   y_range <- range(curve[,2],na.rm=T)
   
