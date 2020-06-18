@@ -4,16 +4,11 @@ Ian Calloway
 June 2, 2020
 
   - [What are Principal Curves?](#what-are-principal-curves)
-  - [Pakcage Info](#pakcage-info)
+  - [Package Info](#package-info)
   - [Defining Coordinates](#defining-coordinates)
       - [PCA](#pca)
       - [Principal Curves](#principal-curves)
   - [Tongue Surface Data](#tongue-surface-data)
-
-<style>
-body {
-text-align: justify}
-</style>
 
 ``` r
 knitr::opts_chunk$set(fig.width=12, fig.height=8, warning=FALSE, message=FALSE)
@@ -86,7 +81,7 @@ the time\!*
 
 -----
 
-## Pakcage Info
+## Package Info
 
 Conveniently enough, there is already a package that implements
 principal curves in R - this analysis is largely based off functions
